@@ -20,6 +20,21 @@ export class SupabaseClientService {
     }
 
     addNewsletterSubscriber(email: string) {
-        console.log(this.supabase.from('newsletter').insert({ email }));
+        return this.supabase
+            .from('newsletter')
+            .insert({ email })
+            .then((response) => {
+                if (response.error) {
+                    console.error('Error adding subscriber:', response.error);
+                    throw response.error;
+                } else {
+                    console.log('Subscriber added successfully:', response.data);
+                    return response.data;
+                }
+            })
+            .then(null, (error) => {
+                console.error('Error adding subscriber:', error);
+                throw error;
+            });
     }
 }
