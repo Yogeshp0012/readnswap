@@ -7,8 +7,6 @@ const meta: Meta<FooterComponent> = {
 };
 export default meta;
 
-type footerStory = StoryObj<FooterComponent>;
-
 export const primary: FooterComponent = {
     args: {}
 };

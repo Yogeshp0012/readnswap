@@ -1,19 +1,17 @@
-import { CommonModule } from '@angular/common';
-import { Component, signal } from '@angular/core';
+import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { FooterComponent } from '../footer/footer.component';
+import { PricingComponent } from '../pricing/pricing.component';
+import { NewsletterComponent } from '../newsletter/newsletter.component';
+import { HeroComponent } from '../hero/hero.component';
+import { FeaturesComponent } from '../features/features.component';
 
 @Component({
     selector: 'app-home',
     standalone: true,
-    imports: [RouterOutlet, CommonModule, FooterComponent],
+    imports: [RouterOutlet, FooterComponent, PricingComponent, NewsletterComponent, HeroComponent, FeaturesComponent],
     templateUrl: './home.component.html',
     styleUrl: './home.component.scss'
 })
 export class HomeComponent {
-    hideMobileMenu = signal(true);
-
-    toggleMobileMenu() {
-        this.hideMobileMenu.set(!this.hideMobileMenu());
-    }
 }
