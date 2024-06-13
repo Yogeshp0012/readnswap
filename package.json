@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "node -r dotenv/config custom-webpack.js && ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
@@ -24,6 +24,7 @@
     "@angular/router": "^18.0.0",
     "@supabase/supabase-js": "^2.43.4",
     "@tailwindcss/forms": "^0.5.7",
+    "dotenv": "^16.4.5",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.14.3"
@@ -42,6 +43,7 @@
     "@storybook/blocks": "^8.1.6",
     "@storybook/test": "^8.1.6",
     "@types/jasmine": "~5.1.0",
+    "@types/node": "^20.14.2",
     "autoprefixer": "^10.4.19",
     "husky": "^8.0.0",
     "jasmine-core": "~5.1.0",
