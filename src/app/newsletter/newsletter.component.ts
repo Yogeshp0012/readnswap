@@ -15,6 +15,6 @@ export class NewsletterComponent {
     email: string = '';
 
     addNewsLetter(){
-        this.dbClient.addNewsletterSubscriber("test@gmail.com");
+        this.dbClient.addNewsletterSubscriber(this.email);
     }
 }
