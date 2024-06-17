@@ -1,10 +1,11 @@
 import { CommonModule } from '@angular/common';
 import { Component, signal } from '@angular/core';
+import { NgxPageScrollModule } from 'ngx-page-scroll'
 
 @Component({
   selector: 'app-hero',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule,NgxPageScrollModule],
   templateUrl: './hero.component.html',
   styles: ``
 })
