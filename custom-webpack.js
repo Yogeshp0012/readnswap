@@ -7,6 +7,7 @@ const dotenv = require('dotenv').config({ path: 'src/.env' });;
 const envFile = `export const environment = {
     SUPABASE_URL: '${process.env.SUPABASE_URL}',
     SUPABASE_ANON_KEY: '${process.env.SUPABASE_ANON_KEY}',
+    BASE_URL: '${process.env.BASE_URL}',
 };
 `;
 const targetPath = path.join(__dirname, './src/environments/environment.ts');

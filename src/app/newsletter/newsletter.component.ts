@@ -1,23 +1,24 @@
 import { Component, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { SupabaseClientService } from '../database/supabase-client.service';
-import { ResendService } from '../mail-client/resend.service';
+import { MailClientService } from '../mail-client/mail-client.service';
 
 @Component({
   selector: 'app-newsletter',
   standalone: true,
   imports: [FormsModule],
-  providers: [SupabaseClientService, ResendService],
+  providers: [SupabaseClientService, MailClientService],
   templateUrl: './newsletter.component.html',
   styles: ``
 })
 export class NewsletterComponent {
     private dbClient = inject(SupabaseClientService);
-    private emailClient = inject(ResendService);
+    private emailClient = inject(MailClientService);
     email: string = '';
 
     addNewsLetter(){
-        this.dbClient.addNewsletterSubscriber(this.email);
-        this.emailClient.sendNewsletterSubscribed(this.email);
+        this.emailClient.addSubscriber(this.email).subscribe((data) => {
+            console.log(data);
+        });
     }
 }
