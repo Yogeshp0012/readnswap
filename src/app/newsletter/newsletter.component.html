@@ -6,15 +6,53 @@
         </div>
         <form class="w-full max-w-md lg:col-span-5 lg:pt-2">
             <div class="flex gap-x-4">
+                <div class="w-full">
                 <label for="email-address" class="sr-only">Email address</label>
-                <input [(ngModel)]="email" id="email-address" name="email" type="email" autocomplete="email" required
-                    class="min-w-0 flex-auto rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                <input [ngClass]="{'text-red-900 ring-red-300': invalidEmail}" [(ngModel)]="email" id="email-address" name="email" type="email" autocomplete="email" required
+                    class="w-full flex-auto rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                     placeholder="Enter your email">
+                    <p *ngIf="invalidEmail" class="mt-2 text-sm text-red-600" id="email-error">Not a valid email address.</p>
+                </div>
+                <div>
                 <button (click)="addNewsLetter()" type="submit"
                     class="flex-none rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Subscribe</button>
-            </div>
+                </div>
+                </div>
             <p class="mt-4 text-sm leading-6 text-gray-900">We care about your data. Read our <a href="#"
                     class="font-semibold text-indigo-600 hover:text-indigo-500">privacy&nbsp;policy</a>.</p>
         </form>
+    </div>
+</div>
+
+<div *ngIf="openPopup" class="relative z-50" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+    <div [@fadeInOut] class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"></div>
+    <div class="fixed inset-0 z-10 overflow-y-auto">
+        <div class="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
+            <div [@slideInOut]
+                class="relative transform overflow-hidden rounded-lg bg-white px-4 pb-4 pt-5 text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-sm sm:p-6">
+                <div *ngIf="loader" class="flex items-center justify-center h-48 w-full">
+                    <div class="spinner-7"></div>
+                </div>
+                <div *ngIf="!loader">
+                    <div class="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-green-100">
+                        <svg class="h-6 w-6 text-green-600" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                            stroke="currentColor" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+                        </svg>
+                    </div>
+                    <div class="mt-3 text-center sm:mt-5">
+                        <h3 class="text-base font-semibold leading-6 text-gray-900" id="modal-title">{{title}}</h3>
+                        <div class="mt-2">
+                            <p class="text-sm text-gray-500">{{subtitle}}</p>
+                        </div>
+                    </div>
+                </div>
+                <div *ngIf="!loader" class="mt-5 sm:mt-6">
+                    <button (click)="openPopup=false" type="button"
+                        class="inline-flex w-full justify-center rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Dive
+                        back into Readnswap</button>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
