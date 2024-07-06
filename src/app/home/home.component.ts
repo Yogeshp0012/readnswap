@@ -1,10 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { FooterComponent } from '../footer/footer.component';
 import { PricingComponent } from '../pricing/pricing.component';
 import { NewsletterComponent } from '../newsletter/newsletter.component';
 import { HeroComponent } from '../hero/hero.component';
 import { FeaturesComponent } from '../features/features.component';
+import { ClerkService } from '../auth/clerk.service';
 
 @Component({
     selector: 'app-home',
